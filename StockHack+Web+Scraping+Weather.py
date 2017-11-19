@@ -33,15 +33,14 @@ for s in scripts:
         
         t = int(d[tempIndex + 13: tempIndex + 15])
         print t
-        #infos.append(data)
+        
 
 
-# In[20]:
-
-infos
 
 
-# In[ ]:
+
+
+
 
 
 
