@@ -1,0 +1,71 @@
+package StockHack;
+
+
+import org.jsoup.*;
+import org.jsoup.helper.*;
+import org.jsoup.nodes.*;
+import org.jsoup.select.*;
+import java.io.*;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
+
+public class ScraperInput {
+
+	//public String url = "https://weather.com/";
+
+	public ScraperInput() {
+
+		Document doc = null;
+		//Scanner in = new Scanner(System.in);
+		
+		//System.out.println("Enter country/state/city/zipcode");
+		//String location = in.nextLine();
+		
+		
+		//String in = "theme__inputElement__4bZUj input-gvUyyzTM__inputElement__l7M9C theme__filled__34NWn";
+		try {
+			//System.out.println(url);
+			//doc =Jsoup.connect("https://weather.com/").data("class", in).post();
+			
+			
+			
+			doc = Jsoup.connect("https://www.yahoo.com/news/weather").data("value", "city").post();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+		
+		Elements city = doc.getElementsByClass("D(tb) W(100%)");
+		
+		//Elements table = doc.getElementsByClass("wu-value wu-value-to");
+		//Elements rainPerc = doc.getElementsByClass("hook");
+		
+		//System.out.println(table);
+		
+		List<String> temp = new ArrayList<>();
+		
+		for(Element e : city){
+			
+			temp.add(e.text());
+			
+		}
+		
+		//double avgTemp = Double.parseDouble(temp.get(1));
+		//String percent = temp.get(temp.size() - 3);
+		//System.out.println(temp.size());
+		//int index = percent.indexOf("%");
+		
+		//double percentDouble = Double.parseDouble(percent.substring(0, index));
+		
+		System.out.println(temp);
+		
+		//System.out.println("Average Temp = " + avgTemp + ", % Rainfall = "  + percentDouble);
+		
+	}
+	
+	public static void main (String args[]) {
+
+		new ScraperInput();
+	
+	}
+	
+}
